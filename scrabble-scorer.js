@@ -104,7 +104,7 @@ Enter 0, 1, or 2: `);
   return console.log(
     `Score for '${word.toUpperCase()}: ${scoringAlgorithms[
       choosingScoringAlgorithm
-    ].scoringFunction(word)}`
+    ].scorerFunction(word)}`
   );
 }
 
