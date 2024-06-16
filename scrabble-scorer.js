@@ -38,7 +38,7 @@ function initialPrompt() {
 const newPointStructure = transform(oldPointStructure);
 
 const simpleScorer = (word) => {
-  return `Score for '${word.toUpperCase()}': ${word.length}`;
+  return word.length;
 };
 
 const vowelBonusScorer = (word) => {
@@ -59,7 +59,7 @@ const vowelBonusScorer = (word) => {
       score = score + 1;
     }
   }
-  return `Score for '${word.toUpperCase()}': ${score}`;
+  return score;
 };
 
 const scrabbleScorer = (word) => {
@@ -72,7 +72,8 @@ const scrabbleScorer = (word) => {
       }
     }
   }
-  return `Score for '${word}' is: ${letterPoints}`;
+  const score = letterPoints;
+  return score;
 };
 
 const scoringAlgorithms = [
@@ -102,7 +103,9 @@ function scorerPrompt() {
 2 - Scrabble: Uses scrabble point system
 Enter 0, 1, or 2: `);
   return console.log(
-    scoringAlgorithms[choosingScoringAlgorithm].scoringFunction(word)
+    `Score for '${word};: ${scoringAlgorithms[
+      choosingScoringAlgorithm
+    ].scoringFunction(word)}`
   );
 }
 
@@ -111,7 +114,7 @@ function transform(object) {
   let holderObject = {};
   for (item in object) {
     for (i = 0; i < object[item].length; i++) {
-      newObject[object[item][i]] = Number(item);
+      newObject[object[item][i].toLowerCase()] = Number(item);
     }
   }
   return newObject;
