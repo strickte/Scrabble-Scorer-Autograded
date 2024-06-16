@@ -1,3 +1,3 @@
-const scorer = require('./scrabble-scorer');
+const scorer = require("./scrabble-scorer");
 
-scorer.runProgram();
+scorer.runProgram("zox");

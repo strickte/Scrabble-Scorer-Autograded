@@ -63,7 +63,7 @@ const vowelBonusScorer = (word) => {
 };
 
 const scrabbleScorer = (word) => {
-  word = word.toUpperCase();
+  word = word.toLowerCase();
   let letterPoints = 0;
   for (let i = 0; i < word.length; i++) {
     for (item in newPointStructure) {
@@ -72,8 +72,7 @@ const scrabbleScorer = (word) => {
       }
     }
   }
-  const score = letterPoints;
-  return score;
+  return letterPoints;
 };
 
 const scoringAlgorithms = [
@@ -103,7 +102,7 @@ function scorerPrompt() {
 2 - Scrabble: Uses scrabble point system
 Enter 0, 1, or 2: `);
   return console.log(
-    `Score for '${word};: ${scoringAlgorithms[
+    `Score for '${word.toUpperCase()}: ${scoringAlgorithms[
       choosingScoringAlgorithm
     ].scoringFunction(word)}`
   );
